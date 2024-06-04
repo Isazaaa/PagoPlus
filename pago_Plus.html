@@ -1,37 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PagoPlus</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/colilla.css" />
+  <title>Pago de nomina</title>
 </head>
 
-<body><br>
-
-    <div class="logo-container">
-        <img src="/pagoplus.png" alt="logo empresa" class="logo">
+<body>
+  <header class="header-container" id="login-panel">
+    <h2>BIENVENIDO USUARIO</h2>
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/000/550/980/small/user_icon_001.jpg" alt=""
+      width="130">
+    <button id="btnVerNomina" class="btn">Ver pago de nomina</button>
+    <div class="links">
+      <a href="index.html">Cerrar Sesión</a>
     </div>
-    
-    <h1>Pago de Nomina</h1>
-    <form id="nominaForm">
-        <label for="nombre">Nombre del empleado:</label>
-        <input type="text" id="nombre" required><br><br>
+  </header>
 
-        <label for="horas">Horas trabajadas:</label>
-        <input type="number" id="horas" required><br><br>
+  <!-- Lista de registros -->
+  <div class="container" id="form-colilla" style="display: none">
+    <h2>Colilla</h2>
 
-        <label for="tarifa">Valor de la hora:</label>
-        <input type="text" id="valor" required><br><br>
+    <table>
+      <tr>
+          <th>Dirección</th>
+          <td>Dg. 50A #38 20</td>
+      </tr>
+      <tr>
+          <th>Email</th>
+          <td>juanito@gmail.com</td>
+      </tr>
+      <tr>
+          <th>Teléfono</th>
+          <td>123-456-7890</td>
+      </tr>
+      <tr>
+          <th>Salario</th>
+          <td>$1,500,000</td>
+      </tr>
+      <tr>
+          <th>Auxilio de Transporte</th>
+          <td>$100,000</td>
+      </tr>
+      <tr>
+          <th>Horas Extras</th>
+          <td>$50,000</td>
+      </tr>
+      <tr>
+          <th>Incapacidad por Enfermedad</th>
+          <td>$0</td>
+      </tr>
+      <tr>
+          <th>Aporte Salud Empleado</th>
+          <td>$60,000</td>
+      </tr>
+      <tr>
+          <th>Aporte Pensión Empleado</th>
+          <td>$90,000</td>
+      </tr>
+      <tr>
+          <th>Deducciones</th>
+          <td>$150,000</td>
+      </tr>
+      <tr>
+          <th>Total a Pagar</th>
+          <td>$1,550,000</td>
+      </tr>
+  </table>
 
-        <input type="submit" value="Calcular salario">
-    </form>
+  </div>
 
-    <br>
-    <div id="resultado"> </div>
-
-    <script src="/script.js"></script>
+  <script src="/script.js"></script>
 </body>
 
 </html>
