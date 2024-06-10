@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/colilla.css" />
+  <link rel="stylesheet" href="/PagoPlus/colilla.css" />
   <title>Pago de nomina</title>
 </head>
 
@@ -13,66 +13,51 @@
     <h2>BIENVENIDO USUARIO</h2>
     <img src="https://static.vecteezy.com/system/resources/thumbnails/000/550/980/small/user_icon_001.jpg" alt=""
       width="130">
-    <button id="btnVerNomina" class="btn">Ver pago de nomina</button>
+    <button id="btnVerCalculo" class="btn">Calculo de pago de nomina</button>
     <div class="links">
-      <a href="index.html">Cerrar Sesión</a>
+      <a href="/PagoPlus/index.html">Cerrar Sesión</a>
     </div>
   </header>
 
-  <!-- Lista de registros -->
-  <div class="container" id="form-colilla" style="display: none">
-    <h2>Colilla</h2>
+  <div class="container" id="calculo" style="display: none;">
+    <link rel="stylesheet" href="/PagoPlus/form.css">
+    <div class="logo-container">
+      <img src="/PagoPlus/pagoplus.png" alt="logo empresa" class="logo">
+    </div>
+    <h2>Ingrese los datos</h2>
 
-    <table>
-      <tr>
-          <th>Dirección</th>
-          <td>Dg. 50A #38 20</td>
-      </tr>
-      <tr>
-          <th>Email</th>
-          <td>juanito@gmail.com</td>
-      </tr>
-      <tr>
-          <th>Teléfono</th>
-          <td>123-456-7890</td>
-      </tr>
-      <tr>
-          <th>Salario</th>
-          <td>$1,500,000</td>
-      </tr>
-      <tr>
-          <th>Auxilio de Transporte</th>
-          <td>$100,000</td>
-      </tr>
-      <tr>
-          <th>Horas Extras</th>
-          <td>$50,000</td>
-      </tr>
-      <tr>
-          <th>Incapacidad por Enfermedad</th>
-          <td>$0</td>
-      </tr>
-      <tr>
-          <th>Aporte Salud Empleado</th>
-          <td>$60,000</td>
-      </tr>
-      <tr>
-          <th>Aporte Pensión Empleado</th>
-          <td>$90,000</td>
-      </tr>
-      <tr>
-          <th>Deducciones</th>
-          <td>$150,000</td>
-      </tr>
-      <tr>
-          <th>Total a Pagar</th>
-          <td>$1,550,000</td>
-      </tr>
-  </table>
+    <form id="nominaForm">
+      <label for="nombre">Nombre del empleado:</label>
+      <input type="text" id="nombre" required>
 
+      <label for="Horas">Horas trabajadas:</label>
+      <input type="number" id="Horas" min="1" required>
+
+      <label for="tarifa">Tarifa por hora:</label>
+      <input type="number" id="tarifa" min="1" value="5500" required>
+
+      <label for="salario">Salario:</label>
+      <input type="text" id="salario" readonly>
+      <br><br>
+      <button id="btnVerNomina" class="btn">Ver colilla de pago</button>
+    </form>
   </div>
 
-  <script src="/script.js"></script>
+  <div class="container" id="form-colilla" style="display: none">
+    <div class="logo-container">
+      <img src="/PagoPlus/pagoplus.png" alt="logo empresa" class="logo">
+    </div>
+    <h2>Colilla de pago</h2>
+    <p>Nombre del empleado: <span id="nombreEmpleado"></span></p>
+    <p>Horas trabajadas: <span id="horasTrabajadas"></span></p>
+    <p>Salario Neto: <span id="salarioNeto"></span> COP</p>
+    <p>Auxilio de transporte: <span id="auxilioTransporte"></span> COP</p>
+    <p>Deducciones entidad salud: <span id="deduccionesSalud"></span> COP</p>
+    <p>Deducciones entidad pensión: <span id="deduccionesPension"></span> COP</p>
+    <p>Salario Total: <span id="salarioTotal"></span> COP</p>
+  </div>
+
+  <script src="/PagoPlus/script.js"></script>
 </body>
 
 </html>

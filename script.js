@@ -1,27 +1,55 @@
 
 function mostrarPagoNomina() {
+
+   // Obtener los datos ingresados en el formulario
+   let nombreEmpleado = document.getElementById("nombre").value;
+   let horasTrabajadas = parseFloat(document.getElementById("Horas").value);
+   let tarifaPorHora = parseFloat(document.getElementById("tarifa").value);
+   let salario = horasTrabajadas * tarifaPorHora;
+   let auxilioTransporte = 162000;
+   let deduccionesSalud = salario * 0.04;
+   let deduccionesPension = salario * 0.04;
+   let salarioTotal = salario + auxilioTransporte - deduccionesSalud - deduccionesPension;
+
+
+    // Mostrar los datos en la colilla de pago
+  document.getElementById("nombreEmpleado").textContent = nombreEmpleado;
+  document.getElementById("horasTrabajadas").textContent = horasTrabajadas;
+  document.getElementById("salarioNeto").textContent = salario;
+  document.getElementById("auxilioTransporte").textContent = auxilioTransporte;
+  document.getElementById("deduccionesSalud").textContent = deduccionesSalud;
+  document.getElementById("deduccionesPension").textContent = deduccionesPension;
+  document.getElementById("salarioTotal").textContent = salarioTotal;
+
+
   document.getElementById("form-colilla").style.display = "block";
+  document.getElementById("calculo").style.display = "none";
+ 
+  event.preventDefault();
 }
 
-document
-  .querySelector("#btnVerNomina")
-  .addEventListener("click", mostrarPagoNomina);
+function mostrarCalculo() {
+  document.getElementById("calculo").style.display = "block";
+  document.getElementById("form-colilla").style.display = "none";
+}
+
+document.querySelector("#btnVerCalculo").addEventListener("click", mostrarCalculo);
+document.querySelector("#btnVerNomina").addEventListener("click", mostrarPagoNomina);
 
 
-      function generarColilla() {
-        // Obtener valores del formulario
-        var nombre = document.getElementById("nombre").value;
-        var salarioMensual = parseFloat(document.getElementById("salario").value);
+// Escuchar cambios en las horas trabajadas y tarifa por hora para calcular automáticamente el salario
+document.getElementById("Horas").addEventListener("input", calcularSalarioAutomatico);
+document.getElementById("tarifa").addEventListener("input", calcularSalarioAutomatico);
+
+
+// Función para calcular el salario automáticamente
+function calcularSalarioAutomatico() {
+  let horasTrabajadas = parseFloat(document.getElementById("Horas").value);
+  let tarifaPorHora = parseFloat(document.getElementById("tarifa").value);
+  let salario = horasTrabajadas * tarifaPorHora;
+
+  // Formatear el salario como moneda
+  let salarioFormateado = salario.toLocaleString('es-CO', {style: 'currency', currency: 'COP'});
   
-        // Calcular salario quincenal (asumiendo 2 quincenas al mes)
-        var salarioQuincenal = salarioMensual / 2;
-  
-        // Mostrar colilla de pago
-        document.getElementById("nombreEmpleado").innerText = nombre;
-        document.getElementById("salarioMensual").innerText = salarioMensual.toFixed(2);
-        document.getElementById("salarioQuincenal").innerText = salarioQuincenal.toFixed(2);
-        
-        // Mostrar el área de la colilla de pago
-        document.getElementById("colilla").style.display = "block";
-      }
-
+  document.getElementById("salario").value = salarioFormateado;
+}
